@@ -307,7 +307,7 @@ button:focus-visible {
     .hero-app.wm-mtm img { height: 1.6rem; }
 }
 
-/* Sound wave: chaos settling into calm */
+/* Hero sheet music: restless notes falling silent under the tacet mark */
 .sound-wave {
     max-width: 700px;
     margin: 3rem auto 0;
@@ -320,20 +320,50 @@ button:focus-visible {
     filter: drop-shadow(0 0 8px rgba(91, 134, 171, 0.35));
 }
 
-.sound-wave path {
-    fill: none;
+.staff-lines line {
     stroke: var(--accent);
-    stroke-width: 2;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    opacity: 0.35;
     vector-effect: non-scaling-stroke;
 }
 
-/* The wave breathes: chaos (jagged) gently resolving into calm (smooth), on a slow loop. */
-.wave-jagged {
+.notes-chaos ellipse,
+.notes-chaos .beam {
+    fill: var(--accent);
+}
+
+.notes-chaos path {
+    stroke: var(--accent);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    fill: none;
+    vector-effect: non-scaling-stroke;
+}
+
+.notes-chaos .beam {
+    stroke: none;
+}
+
+.tacet-rest rect {
+    fill: var(--accent);
+}
+
+.tacet-rest text {
+    fill: var(--accent);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+/* The staff breathes: noisy notes (chaos) gently resolving into the tacet (rest), on a slow loop. */
+.notes-chaos {
     opacity: 0.85;
     animation: wave-breathe-out 9s ease-in-out 1s infinite alternate;
 }
 
-.wave-smooth {
+.tacet-rest {
     opacity: 0;
     animation: wave-breathe-in 9s ease-in-out 1s infinite alternate;
 }
@@ -349,8 +379,8 @@ button:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .wave-jagged { display: none; }
-    .wave-smooth { opacity: 0.9; animation: none; }
+    .notes-chaos { display: none; }
+    .tacet-rest { opacity: 0.9; animation: none; }
 }
 
 /* Stat band */
