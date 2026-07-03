@@ -25,17 +25,51 @@
 
     systemLight.addEventListener('change', apply);
 
+    // English source strings; other languages come from window.I18N (translations.js).
+    // Labels starting with "prefs." are translation keys; anything else (A, A+, A++)
+    // is a literal shown as-is in every language.
+    const EN = {
+        'prefs.title': 'Reading preferences',
+        'prefs.theme': 'Theme',
+        'prefs.system': 'System',
+        'prefs.light': 'Light',
+        'prefs.dark': 'Dark',
+        'prefs.font': 'Font',
+        'prefs.default': 'Default',
+        'prefs.dyslexic': 'Dyslexia-friendly',
+        'prefs.textsize': 'Text size',
+        'prefs.spacing': 'Line spacing',
+        'prefs.normal': 'Normal',
+        'prefs.relaxed': 'Relaxed',
+        'prefs.reset': 'Reset to defaults'
+    };
+    function siteLang() {
+        return (window.getSiteLang && window.getSiteLang()) || 'en';
+    }
+    function t(key) {
+        if (key.indexOf('prefs.') !== 0) return key; // literal label
+        const lang = siteLang();
+        if (lang !== 'en' && window.I18N && window.I18N[lang] && window.I18N[lang][key] != null) {
+            return window.I18N[lang][key];
+        }
+        return EN[key];
+    }
+    function mark(el, key) {
+        if (key.indexOf('prefs.') === 0) el.dataset.l10n = key;
+        el.textContent = t(key);
+    }
+
     const groups = [
-        { key: 'theme', label: 'Theme', def: 'system', options: [['system', 'System'], ['light', 'Light'], ['dark', 'Dark']] },
-        { key: 'font', label: 'Font', def: '', options: [['', 'Default'], ['dyslexic', 'Dyslexia-friendly']] },
-        { key: 'textsize', label: 'Text size', def: '', options: [['', 'A'], ['large', 'A+'], ['xl', 'A++']] },
-        { key: 'spacing', label: 'Line spacing', def: '', options: [['', 'Normal'], ['relaxed', 'Relaxed']] }
+        { key: 'theme', label: 'prefs.theme', def: 'system', options: [['system', 'prefs.system'], ['light', 'prefs.light'], ['dark', 'prefs.dark']] },
+        { key: 'font', label: 'prefs.font', def: '', options: [['', 'prefs.default'], ['dyslexic', 'prefs.dyslexic']] },
+        { key: 'textsize', label: 'prefs.textsize', def: '', options: [['', 'A'], ['large', 'A+'], ['xl', 'A++']] },
+        { key: 'spacing', label: 'prefs.spacing', def: '', options: [['', 'prefs.normal'], ['relaxed', 'prefs.relaxed']] }
     ];
 
     const toggle = document.createElement('button');
     toggle.className = 'prefs-toggle';
     toggle.textContent = 'Aa';
-    toggle.setAttribute('aria-label', 'Reading preferences');
+    toggle.setAttribute('aria-label', t('prefs.title'));
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-controls', 'prefsPanel');
 
@@ -45,7 +79,7 @@
     panel.hidden = true;
 
     const title = document.createElement('h2');
-    title.textContent = 'Reading preferences';
+    mark(title, 'prefs.title');
     panel.appendChild(title);
 
     // Refresh pressed-state across every set of controls on the page
@@ -66,14 +100,14 @@
         groups.forEach(group => {
             const fieldset = document.createElement('fieldset');
             const legend = document.createElement('legend');
-            legend.textContent = group.label;
+            mark(legend, group.label);
             fieldset.appendChild(legend);
             const row = document.createElement('div');
             row.className = 'prefs-options';
             group.options.forEach(([value, label]) => {
                 const btn = document.createElement('button');
                 btn.type = 'button';
-                btn.textContent = label;
+                mark(btn, label);
                 btn.dataset.group = group.key;
                 btn.dataset.value = value;
                 btn.addEventListener('click', () => {
@@ -105,7 +139,7 @@
     const reset = document.createElement('button');
     reset.type = 'button';
     reset.className = 'prefs-reset';
-    reset.textContent = 'Reset to defaults';
+    mark(reset, 'prefs.reset');
     reset.addEventListener('click', () => {
         prefs = {};
         try { localStorage.removeItem(KEY); } catch (e) { /* private mode */ }
@@ -130,10 +164,20 @@
         if (!panel.hidden && !panel.contains(e.target) && e.target !== toggle) setOpen(false);
     });
 
+    // Re-translate every label when the site language changes.
+    function relabel() {
+        document.querySelectorAll('[data-l10n]').forEach(el => {
+            el.textContent = t(el.dataset.l10n);
+        });
+        toggle.setAttribute('aria-label', t('prefs.title'));
+    }
+    document.addEventListener('natladev:langchange', relabel);
+
     document.body.appendChild(toggle);
     document.body.appendChild(panel);
     refreshButtons();
     apply();
+    relabel();
 
     // First-visit nudge: invite people to read the site their way (shown once, ever).
     try {
@@ -141,22 +185,8 @@
         if (!localStorage.getItem(HINT_KEY)) {
             const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-            // Match the language i18n.js resolves: saved choice, else browser language.
-            const SUPPORTED = ['en', 'es', 'de'];
-            let hintLang = 'en';
-            try {
-                const saved = localStorage.getItem('natladev-lang');
-                if (SUPPORTED.indexOf(saved) >= 0) hintLang = saved;
-            } catch (e) { /* private mode */ }
-            if (hintLang === 'en') {
-                const langPrefs = (navigator.languages && navigator.languages.length)
-                    ? navigator.languages
-                    : [navigator.language || navigator.userLanguage || ''];
-                for (let i = 0; i < langPrefs.length; i++) {
-                    const code = (langPrefs[i] || '').slice(0, 2).toLowerCase();
-                    if (SUPPORTED.indexOf(code) >= 0) { hintLang = code; break; }
-                }
-            }
+            // i18n.js has already resolved the language (URL override, saved choice, browser).
+            const hintLang = siteLang();
             const dict = (hintLang !== 'en' && window.I18N && window.I18N[hintLang]) ? window.I18N[hintLang] : null;
             const hintHTML = (dict && dict['prefs.hint'])
                 ? dict['prefs.hint']

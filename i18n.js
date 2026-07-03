@@ -3,11 +3,17 @@
 // source — it's read straight from the DOM, so the dictionary only carries es/de.
 (function () {
     const KEY = 'natladev-lang';
-    const SUPPORTED = ['en', 'es', 'de'];
+    const SUPPORTED = ['en', 'es', 'de', 'zh'];
     const root = document.documentElement;
     const T = window.I18N || {};
 
     function readLang() {
+        // An explicit ?lang= in the URL wins over everything (used e.g. as the
+        // App Store Connect privacy-policy URL for a specific locale).
+        try {
+            const q = new URLSearchParams(location.search).get('lang');
+            if (SUPPORTED.indexOf(q) >= 0) return q;
+        } catch (e) { /* very old browser */ }
         // A saved choice always wins.
         try {
             const saved = localStorage.getItem(KEY);
@@ -49,7 +55,7 @@
     }
 
     function apply() {
-        root.setAttribute('lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh-Hans' : lang);
         textEls.forEach(el => {
             const t = val(el.getAttribute('data-i18n'));
             el.textContent = (t != null) ? t : el.dataset.en;
@@ -67,6 +73,8 @@
         document.querySelectorAll('.lang-btn').forEach(b => {
             b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
         });
+        // Let scripts that build their own DOM (e.g. prefs.js) re-translate.
+        document.dispatchEvent(new CustomEvent('natladev:langchange', { detail: { lang: lang } }));
     }
 
     function setLang(l) {
@@ -82,4 +90,5 @@
 
     apply();
     window.setSiteLang = setLang;
+    window.getSiteLang = function () { return lang; };
 })();
