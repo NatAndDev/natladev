@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 150" role="img" aria-label="Tacet">
+  <style>
+    text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+      font-size: 64px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      fill: #0f172a;
+    }
+  </style>
+  <g fill="#001F3F" transform="translate(7.08 -5.85) scale(0.1286)">
+    <rect x="256" y="201" width="48" height="192" rx="14"/>
+    <rect x="720" y="201" width="48" height="192" rx="14"/>
+    <rect x="280" y="258" width="465" height="78" rx="18"/>
+    <rect x="459" y="298" width="107" height="525" rx="18"/>
+  </g>
+  <text x="114" y="100" text-anchor="start">acet</text>
+</svg>

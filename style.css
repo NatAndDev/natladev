@@ -292,7 +292,7 @@ button:focus-visible {
     color: var(--text-muted);
 }
 
-/* Sonati's mark is compact, so size it to sit level with the ClearPage logo */
+/* Tacet's mark is compact, so size it to sit level with the ClearPage logo */
 .hero-app.wm-mtm img { height: 2rem; }
 
 .hero-app:focus-visible {
