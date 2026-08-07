@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ClearPage, a free, offline iOS app that re-renders text from any photo or screenshot in a dyslexia-friendly layout. No accounts, no network, no analytics.">
+    <meta name="description" content="ClearPage, a free, offline iOS app for dyslexia and dyscalculia. Re-renders text from any photo or screenshot in a layout you control, and decodes math symbols. No accounts, no network, no analytics.">
     <meta name="apple-itunes-app" content="app-id=6779539839">
-    <title>ClearPage | Natalia Andrzejewski</title>
+    <title>ClearPage | Dyslexia &amp; dyscalculia reader</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="ClearPage, dyslexia-friendly reading, from any photo">
-    <meta property="og:description" content="A free, offline iOS app that re-renders text from any photo or screenshot in a dyslexia-friendly layout. Smoothing the digital path for everyone.">
+    <meta property="og:title" content="ClearPage, reading for dyslexia and dyscalculia, from any photo">
+    <meta property="og:description" content="A free, offline iOS app for dyslexia and dyscalculia. Text re-rendered your way, and math symbols explained. Smoothing the digital path for everyone.">
     <meta property="og:url" content="https://natladev.com/clearpage.html">
     <meta property="og:image" content="https://natladev.com/assets/clearpage/og-launch.jpg">
     <meta property="og:image:width" content="1200">
@@ -17,7 +17,7 @@
     <meta property="og:image:alt" content="ClearPage: Dyslexia Reader, New launch alert. Ready. Set. Get. Now on the App Store.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://natladev.com/assets/clearpage/og-launch.jpg">
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css?v=3">
     <script>(function(){try{var p=JSON.parse(localStorage.getItem('natladev-prefs')||'{}');var d=document.documentElement,t=p.theme;d.dataset.theme=(t==='light'||t==='dark')?t:(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');if(p.font)d.dataset.font=p.font;if(p.textsize)d.dataset.textsize=p.textsize;if(p.spacing)d.dataset.spacing=p.spacing;}catch(e){}})();</script>
     <script type="application/ld+json">
     {
@@ -31,7 +31,7 @@
         "softwareVersion": "1.4",
         "downloadUrl": "https://apps.apple.com/app/clearpage-dyslexia-reader/id6779539839",
         "installUrl": "https://apps.apple.com/app/clearpage-dyslexia-reader/id6779539839",
-        "description": "A free, offline iOS app that re-renders text from any photo or screenshot in a dyslexia-friendly layout. On-device OCR in English, Spanish, German, and Simplified Chinese. No accounts, no network, no analytics.",
+        "description": "A free, offline iOS app for dyslexia and dyscalculia. Re-renders text from any photo or screenshot in a dyslexia-friendly layout, and color-anchors, explains and reads aloud confusable math symbols. On-device OCR in English, Spanish, German, and Simplified Chinese. No accounts, no network, no analytics.",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR", "url": "https://apps.apple.com/app/clearpage-dyslexia-reader/id6779539839" },
         "author": { "@type": "Person", "name": "Natalia Andrzejewski", "url": "https://natladev.com/" }
     }
@@ -70,7 +70,7 @@
                 <span style="color: var(--accent);">ClearPage</span>
             </nav>
             <h1 class="wordmark"><img class="dark-only" src="assets/clearpage/clearpage-wordmark-cream.svg" alt="ClearPage" width="420" height="142"><img class="light-only" src="assets/clearpage/clearpage-wordmark-ink.svg" alt="ClearPage" width="420" height="142"></h1>
-            <p class="subtitle" data-i18n="cp.hero.sub">A free, offline iOS app that re-renders text from any photo or screenshot in a dyslexia-friendly layout, your spacing, your typeface, your colors.</p>
+            <p class="subtitle" data-i18n="cp.hero.sub">A free, offline iOS app for dyslexia and dyscalculia. Text from any photo or screenshot, re-rendered your way, with the math symbols decoded too.</p>
             <div class="social-links">
                 <a href="https://apps.apple.com/app/clearpage-dyslexia-reader/id6779539839" class="appstore-badge" rel="noopener" aria-label="Download ClearPage on the App Store">
                     <img class="dark-only" src="assets/clearpage/appstoremerch/white.svg" alt="Download on the App Store" data-i18n-alt="cp.badgeAlt" width="135" height="40">
@@ -181,6 +181,37 @@
         </div>
     </section>
 
+    <section id="math" class="section">
+        <div class="container">
+            <h2 data-i18n="cp.math.h2">Math is a reading problem too</h2>
+            <div class="about-content">
+                <p data-i18n="cp.math.lead">Dyscalculia gets almost nothing. Every major reader assumes the problem is words, so notation is left exactly as it was: symbols that look alike, meanings you're expected to already know, formulas no voice reads correctly. ClearPage treats math as part of the page.</p>
+            </div>
+            <div class="math-showcase">
+                <div class="card-media math-media">
+                    <video autoplay muted loop playsinline poster="assets/clearpage/clips/math-decoded-poster.jpg">
+                        <source src="assets/clearpage/clips/math-decoded.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <ul class="math-points">
+                    <li>
+                        <strong data-i18n="cp.math.p1.h">35 symbols, color-anchored</strong>
+                        <span data-i18n="cp.math.p1.p">∈ against ⊂, ≤ against ≥, ℝ against R. Look-alikes get consistent colors so they stop swapping places.</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="cp.math.p2.h">Every symbol explained</strong>
+                        <span data-i18n="cp.math.p2.p">Tap any one for a plain-language meaning card. No prior notation knowledge assumed.</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="cp.math.p3.h">Formulas read aloud, correctly</strong>
+                        <span data-i18n="cp.math.p3.p">Spoken as math, not as a string of characters, so a formula can be heard as well as seen.</span>
+                    </li>
+                </ul>
+            </div>
+            <p class="math-next" data-i18n-html="cp.math.next"><strong>Coming in 2.0:</strong> two-dimensional math. Fractions, sums, integrals and derivatives read as structure instead of being flattened into a line of characters.</p>
+        </div>
+    </section>
+
     <section id="features" class="section">
         <div class="container">
             <h2 data-i18n="cp.feat.h2">What it does</h2>
@@ -227,20 +258,6 @@
                         <span>Reading Ruler</span>
                     </div>
                 </div>
-                <div class="work-card feat-card accent-gold">
-                    <div class="card-media">
-                        <video autoplay muted loop playsinline poster="assets/clearpage/clips/math-decoded-poster.jpg">
-                            <source src="assets/clearpage/clips/math-decoded.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <h3 data-i18n="cp.feat.math.h">Math, decoded</h3>
-                    <p data-i18n="cp.feat.math.p">Math Power colors look-alike symbols (∈, ⊂, &lt;, &gt;), explains each in plain language, and reads formulas aloud.</p>
-                    <div class="tags">
-                        <span>Math Power</span>
-                        <span>Symbol Glossary</span>
-                        <span>Spoken Formulas</span>
-                    </div>
-                </div>
                 <div class="work-card feat-card accent-teal">
                     <div class="card-media">
                         <img src="assets/clearpage/screenshots/action_extension-web.webp" alt="The iOS share sheet showing a Read with ClearPage action" data-i18n-alt="cp.feat.share.alt" width="720" height="1558" loading="lazy">
@@ -256,13 +273,46 @@
         </div>
     </section>
 
-    <section id="status" class="section has-glow">
+    <section id="team" class="section has-glow">
         <div class="container">
-            <h2 data-i18n="cp.get.h2">Get ClearPage</h2>
-            <div class="get-launch">
-                <a href="https://apps.apple.com/app/clearpage-dyslexia-reader/id6779539839" class="launch-card-link" rel="noopener" aria-label="Download ClearPage on the App Store" data-i18n-aria="cp.badgeAlt">
-                    <img class="launch-card" src="assets/clearpage/og-launch.jpg" alt="ClearPage: Dyslexia Reader, New launch alert. Ready. Set. Get. Now on the App Store." data-i18n-alt="cp.get.alt" width="1200" height="628">
-                </a>
+            <h2 data-i18n="cp.team.h2">Meet the team</h2>
+            <p class="team-intro" data-i18n="cp.team.intro">ClearPage isn't a solo project. It's built by a small group of people who care about the same thing.</p>
+            <div class="team-grid">
+                <!--
+                  To add someone: copy one .team-card block, bump the key number
+                  (cp.team.p4.role / cp.team.p4.p), pick an unused accent class
+                  (accent-gold / amber), and add the two new keys to es, de, and zh
+                  in translations.js. Names aren't translated. Drop a square photo
+                  in assets/team/; if there isn't one yet, use the initials
+                  fallback instead: <span class="team-avatar team-avatar-fallback"
+                  aria-hidden="true">XY</span>
+                -->
+                <div class="team-card accent-rose">
+                    <img class="team-avatar" src="assets/team/nat.jpeg" alt="Natalia Andrzejewski" width="1086" height="1448" loading="lazy">
+                    <div class="team-body">
+                        <span class="team-role" data-i18n="cp.team.p1.role">Creator, iOS &amp; ML development</span>
+                        <h3>Natalia Andrzejewski</h3>
+                        <p data-i18n="cp.team.p1.p">Builds and ships the app: the reading engine, the on-device OCR, and the accessibility work underneath it.</p>
+                    </div>
+                </div>
+                <div class="team-card accent-blue">
+                    <img class="team-avatar" src="assets/team/markus.webp" alt="Markus Christian Schmiedeberg" width="700" height="700" loading="lazy">
+                    <div class="team-body">
+                        <span class="team-role" data-i18n="cp.team.p2.role">Creative Director</span>
+                        <h3>Markus Christian Schmiedeberg</h3>
+                        <p data-i18n="cp.team.p2.p">Twenty-five years in product and communication design. He came to ClearPage from the outside, found what wasn't working, and stayed to redesign all of it: direction, experience, and every screen.</p>
+                        <a class="team-link" href="https://mcs-solutions.de/" target="_blank" rel="noopener noreferrer">mcs-solutions.de →</a>
+                    </div>
+                </div>
+                <div class="team-card accent-teal">
+                    <img class="team-avatar" src="assets/team/lgoyes.jpeg" alt="David Goyes" width="800" height="800" loading="lazy">
+                    <div class="team-body">
+                        <span class="team-role" data-i18n="cp.team.p3.role">Architect &amp; iOS development</span>
+                        <h3>David Goyes</h3>
+                        <p data-i18n="cp.team.p3.p">More than ten years in mobile development across iOS and Android, in fintech, gaming, AR, and healthcare. He brings to the redesign the architecture and the technical robustness ClearPage needs to become the best free app for dyslexia there is.</p>
+                        <a class="team-link" href="https://www.linkedin.com/in/lgoyes/" target="_blank" rel="noopener noreferrer">LinkedIn →</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -316,10 +366,10 @@
         </div>
     </footer>
 
-    <script src="translations.js"></script>
-    <script src="i18n.js"></script>
-    <script src="script.js"></script>
-    <script src="prefs.js" defer></script>
+    <script src="translations.js?v=3"></script>
+    <script src="i18n.js?v=3"></script>
+    <script src="script.js?v=3"></script>
+    <script src="prefs.js?v=3" defer></script>
     <script>
     (function () {
         const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
