@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="How the ClearPage iOS app supports accessibility: reading profiles, color-anchored letters, Read Aloud, VoiceOver, Dynamic Type, and supported languages (English, Spanish, German).">
+    <meta name="description" content="How the ClearPage iOS app supports accessibility: reading profiles, color-anchored letters, Read Aloud, VoiceOver, Dynamic Type, and supported languages (English, Spanish, German, Simplified Chinese).">
     <title>ClearPage Accessibility | Natalia Andrzejewski</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css?v=2">
@@ -20,7 +20,6 @@
                     <li><a href="index.html#work" data-i18n="nav.work">Work</a></li>
                     <li><a href="clearpage.html" data-i18n="nav.dyslexia">Dyslexia</a></li>
                     <li><a href="tinnitus.html" data-i18n="nav.tinnitus">Tinnitus</a></li>
-                    <li><a href="devlog.html" data-i18n="nav.devlog">Devlog</a></li>
                     <li><a href="support.html" data-i18n="nav.support">Support</a></li>
                     <li><a href="index.html#socials" data-i18n="nav.connect">Connect</a></li>
                 </ul>
@@ -44,7 +43,7 @@
                 <p data-i18n="cpa.intro">ClearPage is an accessibility tool first. It re-renders text — from a photo, screenshot, PDF, pasted text, or the live camera — into a layout shaped for dyslexic and dyscalculic readers, and it works alongside the accessibility features built into iPhone and iPad. This page explains what's supported, how to turn each feature on, which languages are covered, and where support has limits. Everything runs on your device; nothing you read is uploaded.</p>
 
                 <h3 data-i18n="cpa.s1.h">Your reading profile</h3>
-                <p data-i18n="cpa.s1.p">A 30-second calibration asks which sample feels easiest to read and builds a profile from your answers: letter spacing, line height, text size, a dyslexia-friendly typeface (OpenDyslexic is included), and a low-stimulus background tint. The profile styles the whole app, including the Home Screen icon and widget. You can redo the calibration or adjust any value at any time in Settings.</p>
+                <p data-i18n="cpa.s1.p">A 30-second calibration asks which sample feels easiest to read and builds a profile from your answers: letter spacing, line height, text size, a dyslexia-friendly typeface (OpenDyslexic is included), and a low-stimulus background tint. The profile styles the whole app, including the Home Screen icon. You can redo the calibration or adjust any value at any time in Settings.</p>
 
                 <h3 data-i18n="cpa.s2.h">Letters and math symbols that stay put</h3>
                 <p data-i18n="cpa.s2.p">Confusable letters (b, d, p, q) are anchored in consistent colors so they stop flipping, and 35 confusable math symbols (such as ∈, ⊂, ℝ, ≤) are color-anchored too. Tap any math symbol for a plain-language meaning card. You can change which letters are anchored, and to which colors, in Settings — useful if you also have a color-vision difference.</p>
@@ -62,10 +61,10 @@
                 <p data-i18n="cpa.s6.p">Reading sizes scale up to 80 pt and are multiplied further by your Dynamic Type setting, so very large text is available without zooming. The rest of the interface follows the system text-size setting.</p>
 
                 <h3 data-i18n="cpa.s7.h">Supported languages</h3>
-                <p data-i18n="cpa.s7.p">The interface, on-device text recognition (OCR), and Read Aloud are all available in English, Spanish, and German. A language picker in Settings (Follow System, English, Español, Deutsch) sets the display language on the next launch; OCR and Read Aloud switch immediately, and word-by-word highlighting follows the spoken language. Other languages aren't supported yet.</p>
+                <p data-i18n="cpa.s7.p">The interface, on-device text recognition (OCR), and Read Aloud are all available in English, Spanish, German, and Simplified Chinese. ClearPage follows your device language, so setting the language in Settings → General → Language &amp; Region switches the whole app; word-by-word highlighting follows the spoken language. Other languages aren't supported yet.</p>
 
                 <h3 data-i18n="cpa.s8.h">Several ways to bring text in</h3>
-                <p data-i18n="cpa.s8.p">Because no single input works for everyone, ClearPage accepts text many ways: the camera, a photo or screenshot, pasted text or images, Live camera mode, the Share and Action extensions from any app, Siri and Shortcuts, the Action Button, and a Home Screen widget. Camera and photo access are optional — you can paste instead.</p>
+                <p data-i18n="cpa.s8.p">Because no single input works for everyone, ClearPage accepts text many ways: the camera, a photo or screenshot, pasted text or images, Live camera mode, the Share and Action extensions from any app, Siri and Shortcuts, the Action Button, and Control Centre and Lock Screen controls. Camera and photo access are optional — you can paste instead.</p>
 
                 <h3 data-i18n="cpa.s9.h">Private by design</h3>
                 <p data-i18n-html="cpa.s9.p">There is no account and no network use, which removes sign-in and connectivity as barriers. All recognition and speech run on your device. See the <a href="clearpage-privacy.html">privacy policy</a> for details.</p>
@@ -75,7 +74,7 @@
                 <ul>
                     <li data-i18n-html="cpa.s10.li1"><strong>Recognition depends on the image.</strong> Low-contrast, blurry, handwritten, or heavily stylized text may be recognized imperfectly.</li>
                     <li data-i18n-html="cpa.s10.li2"><strong>Read Aloud voices vary by device.</strong> Quality and available languages depend on the voices installed in iOS; if no voice is installed for a language, speech may fall back or be unavailable.</li>
-                    <li data-i18n-html="cpa.s10.li3"><strong>Languages.</strong> Only English, Spanish, and German are supported across the interface, OCR, and speech today.</li>
+                    <li data-i18n-html="cpa.s10.li3"><strong>Languages.</strong> Only English, Spanish, German, and Simplified Chinese are supported across the interface, OCR, and speech today.</li>
                     <li data-i18n-html="cpa.s10.li4"><strong>Vertical and rotated text.</strong> Recognition of vertical or strongly rotated text is weaker than horizontal text.</li>
                 </ul>
 
